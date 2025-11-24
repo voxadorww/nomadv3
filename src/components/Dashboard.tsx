@@ -122,8 +122,8 @@ export function Dashboard() {
     }
   };
 
-  const requestNewDeveloper = async (projectId: string) => {
-    setRequestingNewDeveloper(projectId);
+  const requestNewDeveloper = async (targetProjectId: string) => {
+    setRequestingNewDeveloper(targetProjectId);
     setError('');
     setSuccess('');
     
@@ -135,9 +135,10 @@ export function Dashboard() {
         setRequestingNewDeveloper(null);
         return;
       }
-
+  
+      // Use the imported projectId for the base URL and targetProjectId for the path
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/projects/${projectId}/request-new-developer`,
+        `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/projects/${targetProjectId}/request-new-developer`,
         {
           method: 'POST',
           headers: {
@@ -145,7 +146,7 @@ export function Dashboard() {
           },
         }
       );
-
+  
       if (response.ok) {
         setSuccess('Request sent to admin. A new developer will be assigned soon.');
         fetchProjects();
@@ -166,7 +167,7 @@ export function Dashboard() {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) return;
-
+  
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/developers/${developerId}`,
         {
@@ -175,7 +176,7 @@ export function Dashboard() {
           },
         }
       );
-
+  
       if (response.ok) {
         const data = await response.json();
         setViewingDeveloper(data.developer);
@@ -501,7 +502,7 @@ export function Dashboard() {
                             >
                               <RefreshCw className={`size-3 mr-1 ${requestingNewDeveloper === project.id ? 'animate-spin' : ''}`} />
                               Request Different Developer
-                            </Button>
+                          </Button>
                           </div>
                         </div>
                       </div>
