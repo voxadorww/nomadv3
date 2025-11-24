@@ -64,7 +64,7 @@ export function AdminPanel() {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) return;
-
+  
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/admin/projects`,
         {
@@ -73,7 +73,7 @@ export function AdminPanel() {
           },
         }
       );
-
+  
       if (response.ok) {
         const data = await response.json();
         setProjects(data.projects || []);
@@ -82,13 +82,13 @@ export function AdminPanel() {
       console.error('Error fetching projects:', err);
     }
   };
-
+  
   const fetchDevelopers = async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) return;
-
+  
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/admin/developers`,
         {
@@ -97,7 +97,7 @@ export function AdminPanel() {
           },
         }
       );
-
+  
       if (response.ok) {
         const data = await response.json();
         setDevelopers(data.developers || []);
@@ -106,13 +106,13 @@ export function AdminPanel() {
       console.error('Error fetching developers:', err);
     }
   };
-
+  
   const fetchAnalytics = async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) return;
-
+  
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/admin/analytics`,
         {
@@ -121,7 +121,7 @@ export function AdminPanel() {
           },
         }
       );
-
+  
       if (response.ok) {
         const data = await response.json();
         setAnalytics(data);
@@ -130,7 +130,7 @@ export function AdminPanel() {
       console.error('Error fetching analytics:', err);
     }
   };
-
+  
   const filterProjects = () => {
     let filtered = projects;
 
@@ -150,7 +150,7 @@ export function AdminPanel() {
     setFilteredProjects(filtered);
   };
 
-  const updateProjectStatus = async (projectId: string, status: string, assignedDeveloper?: string, assignedDeveloperId?: string) => {
+  const updateProjectStatus = async (targetProjectId: string, status: string, assignedDeveloper?: string, assignedDeveloperId?: string) => {
     setLoading(true);
     setError('');
     setSuccess('');
@@ -164,9 +164,8 @@ export function AdminPanel() {
         return;
       }
   
-      // Fix: Use the imported projectId for the base URL, and the function parameter for the specific project
       const response = await fetch(
-        `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/admin/projects/${projectId}`,
+        `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/admin/projects/${targetProjectId}`,
         {
           method: 'PATCH',
           headers: {
