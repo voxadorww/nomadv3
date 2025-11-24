@@ -344,10 +344,11 @@ export function Dashboard() {
                         <SelectValue placeholder="Select payment method" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Credit Card">Credit Card</SelectItem>
-                        <SelectItem value="PayPal">PayPal</SelectItem>
-                        <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
+                        <SelectItem value="Robux">Robux</SelectItem>
+                        <SelectItem value="Skrill">Skrill</SelectItem>
+                        <SelectItem value="Western Union">Western Union</SelectItem>
                         <SelectItem value="Cryptocurrency">Cryptocurrency</SelectItem>
+                        <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
