@@ -63,12 +63,12 @@ export function Footer() {
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="size-4" />
-                  contact@nomad.dev
+                  contact@nomadtm.shop
                 </a>
               </li>
               <li>
                 <a 
-                  href="https://discord.gg/nomad" 
+                  href="https://discord.gg/DRRJdm5c5S" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -79,18 +79,7 @@ export function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/nomad" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Github className="size-4" />
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://twitter.com/nomad" 
+                  href="https://www.tiktok.com/@nomadenterprise" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
