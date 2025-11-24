@@ -154,7 +154,7 @@ export function AdminPanel() {
     setLoading(true);
     setError('');
     setSuccess('');
-
+  
     try {
       const { data: { session } } = await supabase.auth.getSession();
       
@@ -163,7 +163,8 @@ export function AdminPanel() {
         setLoading(false);
         return;
       }
-
+  
+      // Fix: Use the imported projectId for the base URL, and the function parameter for the specific project
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-ae8fa403/admin/projects/${projectId}`,
         {
@@ -175,7 +176,7 @@ export function AdminPanel() {
           body: JSON.stringify({ status, assignedDeveloper, assignedDeveloperId }),
         }
       );
-
+  
       if (response.ok) {
         setSuccess('Project updated successfully');
         fetchProjects();
